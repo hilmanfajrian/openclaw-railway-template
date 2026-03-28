@@ -181,7 +181,7 @@ function sleep(ms) {
 async function waitForGatewayReady(opts = {}) {
   const timeoutMs = opts.timeoutMs ?? 60_000;
   const start = Date.now();
-  const endpoints = ["/openclaw", "/openclaw", "/", "/health"];
+  const endpoints = ["/openclaw", "/", "/health"];
 
   while (Date.now() - start < timeoutMs) {
     for (const endpoint of endpoints) {
@@ -818,7 +818,7 @@ const VALID_AUTH_CHOICES = [
 ];
 
 function validatePayload(payload) {
-if (payload.authChoice && !VALID_AUTH_CHOICES.includes(payload.authChoice)) {
+  if (payload.authChoice && !VALID_AUTH_CHOICES.includes(payload.authChoice)) {
     return `Invalid authChoice: ${payload.authChoice}`;
   }
   const stringFields = [
