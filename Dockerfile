@@ -16,8 +16,8 @@ RUN npm install -g openclaw@2026.4.23 clawhub@latest
 
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml ./
-RUN corepack enable && pnpm install --prod
+COPY package.json ./
+RUN npm install --omit=dev
 
 COPY src ./src
 COPY --chmod=755 entrypoint.sh ./entrypoint.sh
